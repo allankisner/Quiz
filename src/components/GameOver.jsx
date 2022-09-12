@@ -5,19 +5,19 @@ import './style/GameOver.css'
 import WellDone from '../image/welldone.svg'
 
 function GameOver() {
-  return (
-    <div id='gameOver'>
-        
-        <h2>Fim de Jogo!</h2>
-        <p>Pontuação: X</p>
-        <p>Você acertou x de z perguntas.</p>
-        <img src={WellDone} alt='finish' />
-        <button>Restart</button>
+    const [quizState, dispatch] = useContext(QuizContext);
 
-
-
+    return (
+        <div id='gameOver'>
+            <h2>Fim de Jogo!</h2>
+            <p>Pontuação: {quizState.score}</p>
+            <p>
+                Você acertou {quizState.score} de {quizState.questions.length} {" "} perguntas.
+            </p>
+            <img src={WellDone} alt='finish' />
+            <button onClick={() => dispatch({ type: "NEW_GAME" })}>Restart</button>
         </div>
-  )
+    )
 }
 
 export default GameOver
