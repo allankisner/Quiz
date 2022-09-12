@@ -1,22 +1,21 @@
-import React from 'react'
-import Quiz from '../image/quiz.svg'
-import './style/Welcome.css'
-import { useContext } from 'react'
-import { QuizContext } from '../context/quiz'
+import { useContext } from "react";
+import { QuizContext } from "../context/quiz";
+import "./style/Welcome.css";
+import Quiz from "../image/quiz.svg";
 
 const Welcome = () => {
-
-    const quizState = useContext(QuizContext)
-    console.log(quizState)
+  const [quizState, dispatch] = useContext(QuizContext);
 
   return (
     <div id="welcome">
-        <h2>Seja bem vindo</h2>
-        <p>Clique no Botão para começar</p>
-        <button>Iniciar</button>
-        <img src={Quiz} alt="image quiz" />
+      <h2>Seja bem-vindo</h2>
+      <p>Clique no botão abaixo para começar:</p>
+      <button onClick={() => dispatch({ type: "CHANGE_STAGE" })}>
+        Iniciar
+      </button>
+      <img src={Quiz} alt="Início do Quiz" />
     </div>
-  )
-}
+  );
+};
 
 export default Welcome;
